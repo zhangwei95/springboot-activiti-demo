@@ -1,0 +1,34 @@
+# activiti default configuration
+#在activiti的默认配置中，process-definition-location-prefix 是指定activiti流程描述文件的前缀（即路径），
+#启动时，activiti就会去寻找此路径下的流程描述文件，并且自动部署；suffix 是一个String数组，表示描述文件的默    认后缀名，默认以上两种。
+
+
+spring:
+  activiti:
+    database-schema-update: true #是否每次都更新数据库
+    # 自动部署验证设置:true-开启（默认）、false-关闭
+    check-process-definitions: true # activti是否自动部署
+    process-definition-location-prefix: classpath:/processes/
+    #process-definition-location-suffixes: .bpmn
+    history-level: full
+    #db-history-used: true
+    db-identity-used: false
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://10.0.0.21:3306/activiti-test?useUnicode=true&characterEncoding=utf8&transformedBitIsBoolean=yes
+    username: gwy
+    password: qqqqqq
+    hikari:
+      poolName: Hikari
+      auto-commit: false
+      idle-timeout: 60000
+      max-lifetime: 600000
+      maximum-pool-size: 50
+      data-source-properties:
+        cachePrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true
+server:
+  port: 10808
